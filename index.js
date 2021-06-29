@@ -4,43 +4,9 @@ let string3 = "space delimited string";
 let string4 = "Comma-spaces, might, require, typing, caution";
 let charsArr = [","," ",";"];
 // let strcheck = []
-stringArr = [string1, string2, string3, string4];
+stringArray = [string1, string2, string3, string4];
 
 //a) Use the 'includes' method to check to see if the words in each string are separated by commas (,), semicolons (;) or just spaces.
-
-function getDelimiter(string, charsArr) {
-  let delimsFound = ""
-  for (let i = 0; i < charsArr.length; i++) {
-    if (string.includes(charsArr[i])) {
-      delimsFound += charsArr[i];
-    }
-  }
-  return delimsFound;
-}
-function stringManipulator(stringArr) {
-  for (let i = 0; i < stringArr.length; i++) {
-    // console.log(getDelimiter(stringArr[i], charsArr) + "found");
-    delimiter = getDelimiter(stringArr[i], charsArr);
-
-    if (delimiter === ",") {
-      // split, reverse, join ","
-      stringArr[i] = stringArr[i].split(",").reverse().join(",");
-    } else if (delimiter === ";") {
-      stringArr[i] = stringArr[i].split(";").sort().join(",");
-      // split, alphabetize, join",""
-    } else if (delimiter === " ") {
-      stringArr[i] = stringArr[i].split(" ").sort().reverse().join(" ");
-      // split, reverse alphabetize, join","
-    } else {
-      stringArr[i] = stringArr[i].split(", ").reverse().join(",");
-    }
-
-  console.log(stringArr[i])
-  }
-}
-
-stringManipulator(stringArr, charsArr);
-
 
 
 
@@ -60,15 +26,43 @@ stringManipulator(stringArr, charsArr);
 
 
 
+// PROGRAM START // 
+for (let i = 0; i < stringArray.length; i++) {
+    // Feed a string array into the manipulator method, then update the global string array with the new string
+    stringArray[i] = stringManipulator(stringArray[i], charsArr);
+}
+console.log(stringArray);
 
 
+// Functions //
+function getDelimiter(string, charsArr) {
+  let delimsFound = ""
+  for (let i = 0; i < charsArr.length; i++) {
+    if (string.includes(charsArr[i])) {
+      delimsFound += charsArr[i];
+    }
+  }
+  return delimsFound;
+}
 
+function stringManipulator(string, charsArr) {  
+  
+  delimiter = getDelimiter(string, charsArr);
 
-
-
-
-
-
+  if (delimiter === ",") {
+    // split, reverse, join on the comma
+    return string.split(",").reverse().join(",");
+  } else if (delimiter === ";") {
+    // split, alphabetize, join on the comma
+    return string.split(";").sort().join(",");
+  } else if (delimiter === " ") {
+    // split, reverse alphabetize, join on the space
+    return string.split(" ").sort().reverse().join(" ");
+  } else if (delimiter === ", ") {
+    // split, reverse, join on the comma 
+    return string.split(", ").reverse().join(",");
+  }
+}
 
 /*
 V4
@@ -86,14 +80,14 @@ for (let i = 0; i < string1.length; i++) {
 
  V3
 
-for (let i = 0; i < stringArr.length; i++) {
-  console.log(stringArr[i]);
+for (let i = 0; i < stringArray.length; i++) {
+  console.log(string);
 
   // strings[i]
-  let delimiter = getDelimiter(stringArr[i]);
+  let delimiter = getDelimiter(string);
   if (delimiter === ",") {
     //check for spaces
-    if (hasSpaceCharacter(stringArr[i])) {
+    if (hasSpaceCharacter(string)) {
       delimiter = ", ";
     }
   }
