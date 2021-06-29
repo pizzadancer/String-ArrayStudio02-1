@@ -26,16 +26,9 @@ stringArray = [string1, string2, string3, string4];
 
 
 
-// PROGRAM START // 
-for (let i = 0; i < stringArray.length; i++) {
-    // Feed a string array into the manipulator method, then update the global string array with the new string
-    stringArray[i] = stringManipulator(stringArray[i], charsArr);
-}
-console.log(stringArray);
-
-
 // Functions //
 function getDelimiter(string, charsArr) {
+
   let delimsFound = ""
   for (let i = 0; i < charsArr.length; i++) {
     if (string.includes(charsArr[i])) {
@@ -63,6 +56,16 @@ function stringManipulator(string, charsArr) {
     return string.split(", ").reverse().join(",");
   }
 }
+
+
+// PROGRAM START // 
+for (let i = 0; i < stringArray.length; i++) {
+    // Feed a string array into the manipulator method, then update the global string array with the new string
+    stringArray[i] = stringManipulator(stringArray[i], charsArr);
+}
+console.log(stringArray);
+
+
 
 /*
 V4
